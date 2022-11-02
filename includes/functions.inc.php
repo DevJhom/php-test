@@ -104,4 +104,42 @@ function createUser($conn, $name, $email, $username, $pwd) {
     exit();
 }
 
+//LOGIN SECTION
+
+function emptyInputLogin($username, $pwd) {
+    $result;
+
+    if(empty($username) || empty($pwd)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+
+    return $result;
+}
+
+function loginUser($conn, $username, $pwd){
+    $uidExists = uidExists($conn, $username, $username);
+
+    if($uidExists === false){
+        header("location: ../login.php?error=wronglogin");
+        exit();
+    }
+
+    $pwdHashed = $uidExists["usersPwd"]; //grabbing the assoicate array
+    $checkPwd = password_verify($pwdHashed, $pwd);
+
+    if($checkPwd === false){
+        header("location: ../login.php?error=wronglogin");
+        exit();
+    }else if($checkPwd === true){
+        session_start();
+        $_SESSION["userid"] = $uidExists["usersId"];
+        $_SESSION["useruid"] = $uidExists["usersName"];
+        header("location: ../index.php");
+        exit();
+    }
+}
+
 ?>

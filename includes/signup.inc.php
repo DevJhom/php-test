@@ -28,7 +28,7 @@ if (isset($_POST["submit"])){
         exit();
     }
     if(uidExists($conn, $username, $email) !== false){
-        header("location: ../signup.php?error=usernametake");
+        header("location: ../signup.php?error=usernametaken");
         exit();
     }
 
