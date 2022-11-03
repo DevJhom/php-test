@@ -13,11 +13,10 @@
     <title>AAS Shipping</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark justify-content-between">
+<nav class="navbar navbar-light bg-transparent justify-content-between">
   <div class="container">
-    <a class="navbar-brand" href="#">AAS Shipping</a>
+    <a class="navbar-brand font-weight-bold" href="#">AAS Shipping</a>
     <div class="navbar-nav d-flex flex-row justify-content-space-around">
-      <!-- <a class="nav-item nav-link active me-4" href="#">Home</a> -->
 
       <?php
         if(isset($_SESSION["useruid"])){

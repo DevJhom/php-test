@@ -1,3 +1,5 @@
-.container-fluid {
-    height: 80vh;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: #000;
 }

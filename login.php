@@ -3,7 +3,7 @@
 ?>
 
 <section>
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 75vh">
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 77vh">
     <h3>Login</h3>
     <?php
         if(isset($_GET["error"])) {
@@ -20,9 +20,9 @@
         <input class="form-control my-2" type="password" name="pwd" placeholder="Password...">
         <button class="btn btn-primary my-2" type="submit" name="submit">Login</button>
     </form>
-    <p>
+    <small>
     Don't have an account? <span><a href="signup.php">Sign up here</a></span>
-    </p>
+    </small>
 </div>
 
 </section>

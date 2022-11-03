@@ -3,13 +3,18 @@
 ?>
 
 <section>
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 75vh">
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 77vh">
         <?php
+            if(!isset($_SESSION["useruid"])){
+                header("location: login.php");
+                exit();
+            }
+
             include_once 'includes/dbhandler.inc.php';
 
-            $uid = $_SESSION["userid"];
+            $uid = $_SESSION["useruid"];
 
-            $sql = "SELECT * FROM users WHERE usersId = $uid;";
+            $sql = "SELECT * FROM users WHERE usersName = '$uid';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
 

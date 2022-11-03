@@ -3,7 +3,7 @@
 ?>
 
 <section>
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 75vh">
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 77vh">
     <h3>Create an account</h3>
     <?php
         if(isset($_GET["error"])) {
@@ -14,7 +14,7 @@
                 echo "<small class='text-danger'> Choose a proper username! </small>";
             }
             else if($_GET["error"] == "invalidemail"){
-                echo "<small class='text-danger'> Choose a correct username! </small>";
+                echo "<small class='text-danger'> Please enter a valid email! </small>";
             }
             else if($_GET["error"] == "pwdsnotmatch"){
                 echo "<small class='text-danger'> Passwords not match! </small>";
@@ -32,7 +32,7 @@
         }
     ?>
 
-    <form class="d-flex flex-column" action="includes/signup.inc.php" method="post">
+    <form class="d-flex flex-column w-25" action="includes/signup.inc.php" method="post">
         <input class="form-control my-2" type="text" name="name" placeholder="Full name...">
         <input class="form-control my-2" type="text" name="email" placeholder="Email...">
         <input class="form-control my-2" type="text" name="uid" placeholder="Username...">
@@ -40,9 +40,9 @@
         <input class="form-control my-2" type="password" name="pwdrepeat" placeholder="Reenter Password...">
         <button class="btn btn-primary my-2" type="submit" name="submit">Sign Up</button>
     </form>
-    <p>
+    <small>
     Already have an account? <span><a href="login.php">Log in here</a></span>
-    </p>
+    </small>
 
     </div>
 </section>

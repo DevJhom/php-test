@@ -3,23 +3,39 @@
 ?>
 
 <section>
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 75vh">
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 77vh">
+        <table class="table container w-25">
+        <tbody>
         <?php
             include_once 'includes/dbhandler.inc.php';
 
-            $uid = $_SESSION["userid"];
+            $uid = $_SESSION["useruid"];
 
-            $sql = "SELECT * FROM users WHERE usersId = $uid;";
+            $sql = "SELECT * FROM users WHERE usersName = '$uid';";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
 
             if($resultCheck > 0){
                 $row = mysqli_fetch_assoc($result);
             }
-            echo '<h3> Full Name: '.$row['usersFullName'].'</h3>';
-            echo '<h3> Userame: '.$row['usersName'].'</h3>';
-            echo '<h3> Email: '.$row['usersEmail'].'</h3>';
+
+            echo '<tr>
+                    <th scope="row">Full Name:</th>
+                    <td>'.$row['usersFullName'].'</td>
+                  </tr>';
+
+            echo '<tr>
+                    <th scope="row">Userame:</th>
+                    <td>'.$row['usersName'].'</td>
+                  </tr>';
+
+            echo '<tr>
+                    <th scope="row">Email:</th>
+                    <td>'.$row['usersEmail'].'</td>
+                  </tr>';
         ?>
+        </tbody>
+        </table>
     </div>
 </section>
 
