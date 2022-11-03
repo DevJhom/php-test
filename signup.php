@@ -3,41 +3,48 @@
 ?>
 
 <section>
-    <h3>Sign up</h3>
-    <form action="includes/signup.inc.php" method="post">
-        <input type="text" name="name" placeholder="Full name...">
-        <input type="text" name="email" placeholder="Email...">
-        <input type="text" name="uid" placeholder="Username...">
-        <input type="password" name="pwd" placeholder="Password...">
-        <input type="password" name="pwdrepeat" placeholder="Repeat Password...">
-        <button type="submit" name="submit">Sign Up</button>
-    </form>
-
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 75vh">
+    <h3>Create an account</h3>
     <?php
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput"){
-                echo "<p> Please fill in all fields</p>";
+                echo "<small class='text-danger'> Please fill in all fields</small>";
             }
             else if($_GET["error"] == "invaliduid"){
-                echo "<p> Choose a proper username! </p>";
+                echo "<small class='text-danger'> Choose a proper username! </small>";
             }
             else if($_GET["error"] == "invalidemail"){
-                echo "<p> Choose a correct username! </p>";
+                echo "<small class='text-danger'> Choose a correct username! </small>";
             }
             else if($_GET["error"] == "pwdsnotmatch"){
-                echo "<p> Passwords not match! </p>";
+                echo "<small class='text-danger'> Passwords not match! </small>";
             }
             else if($_GET["error"] == "stmtfailed"){
-                echo "<p> Something went wrong! Please try again </p>";
+                echo "<small class='text-danger'> Something went wrong! Please try again </small>";
             }
             else if($_GET["error"] == "usernametaken"){
-                echo "<p> User already taken. Please choose another username </p>";
+                echo "<small class='text-danger'> User already taken. Please choose another username </small>";
             }
             else if($_GET["error"] == "none"){
-                echo "<p> You have signed up! </p>";
+                header("location: index.php?error=emptyinput");
+                exit();
             }
         }
     ?>
+
+    <form class="d-flex flex-column" action="includes/signup.inc.php" method="post">
+        <input class="form-control my-2" type="text" name="name" placeholder="Full name...">
+        <input class="form-control my-2" type="text" name="email" placeholder="Email...">
+        <input class="form-control my-2" type="text" name="uid" placeholder="Username...">
+        <input class="form-control my-2" type="password" name="pwd" placeholder="Password...">
+        <input class="form-control my-2" type="password" name="pwdrepeat" placeholder="Reenter Password...">
+        <button class="btn btn-primary my-2" type="submit" name="submit">Sign Up</button>
+    </form>
+    <p>
+    Already have an account? <span><a href="login.php">Log in here</a></span>
+    </p>
+
+    </div>
 </section>
 
 <?php

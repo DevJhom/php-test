@@ -16,11 +16,10 @@
             if($resultCheck > 0){
                 $row = mysqli_fetch_assoc($result);
             }
-
-            echo '<h3> Hello, '.$row['usersName'].'!</h3>';
+            echo '<h3> Full Name: '.$row['usersFullName'].'</h3>';
+            echo '<h3> Userame: '.$row['usersName'].'</h3>';
+            echo '<h3> Email: '.$row['usersEmail'].'</h3>';
         ?>
-        <br>
-        <p>Welcome to AAS Shipping.</p>
     </div>
 </section>
 

@@ -100,7 +100,9 @@ function createUser($conn, $name, $email, $username, $pwd) {
 
     mysqli_stmt_close($stmt);
 
-    header("location: ../signup.php?error=none");
+    session_start();
+    $_SESSION["useruid"] = $username;
+    header("location: ../index.php");
     exit();
 }
 
@@ -127,11 +129,11 @@ function loginUser($conn, $username, $pwd){
         exit();
     }
 
-    $pwdHashed = $uidExists["usersPwd"]; //grabbing the assoicate array
-    $checkPwd = password_verify($pwdHashed, $pwd);
+    $pwdHashed = $uidExists["usersPassword"]; //grabbing the password from database as an assoicate array
+    $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../login.php?error=passwordiswrong");
         exit();
     }else if($checkPwd === true){
         session_start();
